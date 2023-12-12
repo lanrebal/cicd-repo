@@ -1,0 +1,9 @@
+{
+	"name": "adf-dev-lb",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8841ae12-486f-4c8c-ab0f-901fa7897bca",
+		"tenantId": "1dc001de-7e64-4e0c-8838-3c61506ab15c"
+	}
+}
