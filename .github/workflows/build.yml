@@ -39,8 +39,7 @@ jobs:
         npm run build validate ${{ github.workspace }}/ADFroot/subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb 919e9680-f73f-4012-a318-3fcfee9f22c7
       # Add some debug info
       env:
-        NODE_OPTIONS: '--trace-uncaught'
- 
+        NODE_OPTIONS: '--trace-uncaught' 
 
     - name: Validate and Generate ARM template
       run: npm run build export ${{github.workspace}}/ADFroot/subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb "ExportedArmTemplate" 
