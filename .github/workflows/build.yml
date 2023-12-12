@@ -25,7 +25,7 @@ jobs:
         
 # Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
     - name: Validate
-      run: npm run build validate ${{github.workspace}}/ADFroot/subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb 
+      run: npm run build validate ${{github.workspace}}/ADFroot/subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb 919e9680-f73f-4012-a318-3fcfee9f22c7 
       working-directory: ${{github.workspace}}/ADFroot/build
  
 
