@@ -8,7 +8,7 @@ permissions:
       contents: read
 
 jobs:
-  build-dev:
+  dev:
     runs-on: ubuntu-latest
     steps:
 
@@ -47,8 +47,8 @@ jobs:
         name: ExportedArmTemplate # (4) use the same artifact name you used in the previous export step
         path: ${{github.workspace}}/ADFroot/build/ExportedArmTemplate
 
-  deploy-prod:
-    needs: build-dev
+  prod:
+    needs: dev
     runs-on: ubuntu-latest
     steps:
     
