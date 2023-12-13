@@ -41,8 +41,6 @@ jobs:
         name: ExportedArmTemplate # (4) use the same artifact name you used in the previous export step
         path: ${{github.workspace}}/ADFroot/build/ExportedArmTemplate
 
-
-
 release:
     needs: build
     runs-on: ubuntu-latest
