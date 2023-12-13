@@ -25,6 +25,10 @@ jobs:
     - name: Check Node.js version
       run: node -v
 
+# I included this line to read the publish_config file
+    - name: Create symlink to publish_config.json
+      run: |
+        ln -s ${{ github.workspace }}/ADFroot/build/publish_config.json ${{ github.workspace }}/ADFroot/subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb/publish_config.json
         
 
     - name: install ADF Utilities package
