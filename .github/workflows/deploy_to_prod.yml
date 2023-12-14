@@ -1,5 +1,3 @@
-name: deploy-release
-# Controls when the workflow will run on release action
 on:
   release:
     types: [published]
