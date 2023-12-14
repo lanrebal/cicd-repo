@@ -23,10 +23,17 @@ jobs:
     - name: install ADF Utilities package
       run: npm install
       working-directory: ${{github.workspace}}/ADFroot/build  # (1) provide the folder location of the package.json file
+        
+# Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
+    - name: Validate
+      run: npm run build validate ${{github.workspace}}/ADFroot/ /subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb # (2) The validate command needs the root folder location of your repository where all the objects are stored. And the 2nd parameter is the resourceID of the ADF instance 
+      working-directory: ${{github.workspace}}/ADFroot/build
+ 
 
     - name: Validate and Generate ARM template
       run: npm run build export ${{github.workspace}}/ADFroot/ /subscriptions/919e9680-f73f-4012-a318-3fcfee9f22c7/resourceGroups/rg_ci_cd_test_rg/providers/Microsoft.DataFactory/factories/adf-dev-lb "ExportedArmTemplate"  # (3) The build command, as validate, needs the root folder location of your repository where all the objects are stored. And the 2nd parameter is the resourceID of the ADF instance. The 3rd parameter is the exported ARM template artifact name 
       working-directory: ${{github.workspace}}/ADFroot/build
+      
  
 # In order to leverage the artifact in another job, we need to upload it with the upload action 
     - name: upload artifact
@@ -34,9 +41,9 @@ jobs:
       with:
         name: ExportedArmTemplate # (4) use the same artifact name you used in the previous export step
         path: ${{github.workspace}}/ADFroot/build/ExportedArmTemplate
-        
+
   release-prod:
-    needs: build-test
+    needs: build
     runs-on: ubuntu-latest
     steps:
     
@@ -65,4 +72,4 @@ jobs:
           armTemplateParametersFile: ARMTemplateParametersForFactory.json    # (9) ARM template parameters file name ARMTemplateParametersForFactory.json
           additionalParameters: # (10) Parameters which will be replaced in the ARM template. Expected format 'key1=value key2=value keyN=value'. At the minimum here you should provide the target ADF name parameter. Check the ARMTemplateParametersForFactory.json file for all the parameters that are expected in your scenario
          
-          # skipAzModuleInstallation:  # Parameters which skip the Az module installation. Optional, default is false. 
+          # skipAzModuleInstallation:  # Parameters which skip the Az module installation. Optional, default is false.
