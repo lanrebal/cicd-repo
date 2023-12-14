@@ -43,7 +43,7 @@ jobs:
         path: ${{github.workspace}}/ADFroot/build/ExportedArmTemplate
 
   release-prod:
-    needs: build
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
     
