@@ -1,0 +1,17 @@
+{
+	"name": "dev_AzureSqlDatabase1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "dev_ls_AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "dev-db-secret1"
+			}
+		}
+	}
+}
