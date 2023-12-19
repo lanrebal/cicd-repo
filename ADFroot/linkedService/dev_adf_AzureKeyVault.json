@@ -1,0 +1,10 @@
+{
+	"name": "dev_adf_AzureKeyVault",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://cicd-test-kv.vault.azure.net/"
+		}
+	}
+}
